@@ -3,60 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | NorthBridge Bank</title>
+    <title>NorthBridge Bank</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="auth-container">
+<div class="login-page">
 
-        <div class="auth-card">
+    <div class="brand-section">
+        <h1>NorthBridge</h1>
+        <p>Secure Banking for Modern Britain</p>
+    </div>
 
-            <h1>Welcome Back</h1>
+    <div class="login-card">
 
-            <p>
-                Sign in to access your NorthBridge Bank account
-            </p>
+        <h2>Welcome Back</h2>
+        <span>Sign in to continue</span>
 
-            <form>
+        <form>
 
-                <div class="input-group">
-                    <label>Email Address</label>
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        placeholder="Enter your password"
-                    >
-                </div>
-
-                <button type="submit" class="login-btn">
-                    Login
-                </button>
-
-            </form>
-
-            <div class="auth-links">
-
-                <a href="#">
-                    Forgot Password?
-                </a>
-
-                <a href="register.html">
-                    Create Account
-                </a>
-
+            <div class="input-box">
+                <label>Email Address</label>
+                <input type="email" placeholder="name@email.com">
             </div>
 
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••">
+            </div>
+
+            <a href="#" class="forgot-link">
+                Forgot Password?
+            </a>
+
+            <button type="submit">
+                Sign In
+            </button>
+
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
         </div>
 
+        <a href="register.html" class="create-account">
+            Open New Account
+        </a>
+
     </div>
+
+</div>
 
 </body>
 </html>
