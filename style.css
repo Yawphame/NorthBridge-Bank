@@ -995,3 +995,69 @@ button{
 
     font-size:14px;
 }
+/* STATEMENT PAGE */
+
+.statement-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:20px;
+}
+
+.statement-card{
+    background:white;
+    padding:25px;
+    border-radius:24px;
+    margin-top:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+}
+
+.statement-top{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.statement-search,
+.statement-filter{
+    width:100%;
+    padding:15px;
+    border:1px solid #dbeafe;
+    border-radius:14px;
+    font-size:15px;
+    background:white;
+}
+
+.statement-search:focus,
+.statement-filter:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+.statement-title{
+    margin-bottom:20px;
+    color:#031b4e;
+}
+
+.download-btn{
+    width:100%;
+    margin-top:25px;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #031b4e,
+        #0b3d91
+    );
+
+    color:white;
+    font-size:16px;
+    font-weight:700;
+
+    box-shadow:
+    0 10px 25px rgba(3,27,78,.25);
+}
