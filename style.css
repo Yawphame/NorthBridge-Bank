@@ -734,13 +734,15 @@ button{
 .logo-container{
     display:flex;
     align-items:center;
-    gap:14px;
+    justify-content:center;
+    gap:12px;
 }
 
 .logo-container img{
-    width:52px;
-    height:52px;
+    width:48px;
+    height:48px;
     object-fit:contain;
+    flex-shrink:0;
 }
 
 .logo-text{
@@ -750,10 +752,18 @@ button{
 
 .logo-text h2{
     color:white;
-    font-size:24px;
+    font-size:28px;
     font-weight:800;
-    margin:0;
     line-height:1;
+    margin:0;
+}
+
+.logo-text p{
+    color:#94a3b8;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-top:4px;
 }
 
 .logo-text p{
@@ -801,21 +811,20 @@ button{
 
 @media(max-width:768px){
 
-    .navbar{
-        flex-direction:column;
-        gap:18px;
+    .logo-container{
+        gap:10px;
     }
 
     .logo-container img{
-        width:60px;
-        height:60px;
+        width:42px;
+        height:42px;
     }
 
     .logo-text h2{
-        font-size:22px;
+        font-size:20px;
     }
 
     .logo-text p{
-        text-align:center;
+        font-size:10px;
     }
 }
