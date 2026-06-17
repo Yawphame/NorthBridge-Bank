@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Account | NorthBridge Bank</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Account | NorthBridge Bank</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <script>
-alert("REGISTER PAGE LOADED");
-</script>  
-
 <div class="register-page">
-
     <div class="register-header">
         <h1>Open Your Account</h1>
         <p>Join thousands of customers banking with NorthBridge.</p>
     </div>
-
     <div class="register-card">
-
         <div class="steps">
             <div class="step active">1</div>
             <div class="line"></div>
@@ -28,99 +20,76 @@ alert("REGISTER PAGE LOADED");
             <div class="line"></div>
             <div class="step">3</div>
         </div>
-
         <h2>Create Your Profile</h2>
-
-     <form id="registerForm">
-
+        <form id="registerForm">
             <div class="input-box">
                 <label>Full Name</label>
-                <input type="text" id="fullname" placeholder="John Smith">
+                <input type="text" id="fullname" required>
             </div>
-
             <div class="input-box">
                 <label>Email Address</label>
-                <input type="email" id="email" placeholder="john@email.com">
+                <input type="email" id="email" required>
             </div>
-
             <div class="input-box">
                 <label>Phone Number</label>
-                <input type="tel" id="phone" placeholder="+44 7XXX XXX XXX">
+                <input type="tel" id="phone" required>
             </div>
-
             <div class="input-box">
                 <label>Password</label>
-                <input type="password" id="password" placeholder="Create a password">
+                <input type="password" id="password" required>
             </div>
-
             <div class="input-box">
                 <label>Confirm Password</label>
-                <input type="password" id="confirmPassword" placeholder="Confirm password">
+                <input type="password" id="confirmPassword" required>
             </div>
-
             <button type="submit">
                 Continue
             </button>
-
         </form>
-
         <div class="secure-box">
             🔒 Your information is protected with bank-grade security.
         </div>
-
         <div class="login-link">
             Already have an account?
             <a href="login.html">Sign In</a>
         </div>
-
+    </div>
 </div>
-
-</div>
-<p>TEST TEXT</p>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 const supabaseUrl = "https://bdgiingplpaosqjkqavg.supabase.co";
-const supabaseKey = "sb_publishable_YkCM4m0bLtysMGdNWKjcxw_ourHNa4m";
-
+const supabaseKey = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
 const supabase = window.supabase.createClient(
-  supabaseUrl,
-  supabaseKey
+    supabaseUrl,
+    supabaseKey
 );
-
 document.getElementById("registerForm")
-.addEventListener("submit", async function(e) {
-
+.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    alert("1");
-
+    const fullname =
+        document.getElementById("fullname").value;
     const email =
-      document.getElementById("email").value;
-
+        document.getElementById("email").value;
     const password =
-      document.getElementById("password").value;
-
-    alert("2");
-
+        document.getElementById("password").value;
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+    if(password !== confirmPassword){
+        alert("Passwords do not match");
+        return;
+    }
     const { data, error } =
-      await supabase.auth.signUp({
-        email,
-        password
-      });
-
-    alert("3");
-
+        await supabase.auth.signUp({
+            email,
+            password
+        });
     if(error){
         alert(error.message);
         return;
     }
-
-    alert("SIGNUP SUCCESS");
-
+    alert("Account created successfully!");
+    window.location.href = "login.html";
 });
 </script>
-
 </body>
 </html>
-    
