@@ -670,11 +670,11 @@ button{
 
 .bank-card-preview{
     width:100%;
-    max-width:350px;
+    max-width:380px;
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(10px);
     border-radius:24px;
-    padding:25px;
+    padding:30px;
     color:white;
     box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
@@ -688,13 +688,13 @@ button{
 }
 
 .card-type{
-    font-size:12px;
-    letter-spacing:2px;
+    font-size:14px;
+    letter-spacing:3px;
 }
 
 .bank-card-preview h3{
     margin:20px 0;
-    font-size:32px;
+    font-size:42px;
 }
 
 .bank-card-preview p{
