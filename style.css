@@ -729,19 +729,19 @@ button{
     font-weight:700;
     margin:0;
 }
-/* PREMIUM LOGO */
+/* PREMIUM BANK LOGO */
 
 .logo-container{
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:16px;
+    gap:14px;
 }
 
 .logo-container img{
     width:64px;
     height:64px;
     object-fit:contain;
+    display:block;
     flex-shrink:0;
 }
 
@@ -752,26 +752,17 @@ button{
 
 .logo-text h2{
     color:white;
-    font-size:28px;
+    font-size:22px;
     font-weight:800;
-    line-height:1;
     margin:0;
+    line-height:1;
 }
 
 .logo-text p{
     color:#94a3b8;
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-top:4px;
-}
-
-.logo-text p{
-    color:#94a3b8;
-    font-size:12px;
-    margin-top:4px;
-    letter-spacing:1px;
-    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-top:5px;
 }
 
 /* PREMIUM NAVBAR */
@@ -781,7 +772,7 @@ button{
     justify-content:space-between;
     align-items:center;
 
-    padding:18px 24px;
+    padding:18px 20px;
 
     background:#021845;
 
@@ -791,59 +782,39 @@ button{
     0 8px 25px rgba(0,0,0,.18);
 }
 
-.nav-links{
-    display:flex;
-    gap:20px;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:#60a5fa;
-}
-
 /* MOBILE */
 
 @media(max-width:768px){
 
+    @media(max-width:768px){
+
     .navbar{
-        display:flex;
         flex-direction:column;
         align-items:flex-start;
-        padding:20px;
+        padding:18px 20px;
     }
 
     .logo-container{
-        display:flex;
-        align-items:center;
-        gap:12px;
-        margin-bottom:20px;
+        margin-bottom:16px;
     }
 
     .logo-container img{
-        width:60px;
-        height:60px;
-        object-fit:contain;
+        width:70px;
+        height:70px;
     }
 
     .logo-text h2{
-        font-size:22px;
+        font-size:20px;
     }
 
     .logo-text p{
-        font-size:11px;
-        letter-spacing:2px;
+        font-size:10px;
     }
 
     .nav-links{
         width:100%;
         display:flex;
         justify-content:center;
-        gap:30px;
+        gap:24px;
     }
 }
