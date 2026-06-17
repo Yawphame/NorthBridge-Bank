@@ -849,3 +849,22 @@ button{
         padding:10px 0;
     }
 }
+
+.cta{
+    background:#031b4e;
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.cta h2{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#cbd5e1;
+    max-width:500px;
+    margin:0 auto 25px;
+    line-height:1.7;
+}
