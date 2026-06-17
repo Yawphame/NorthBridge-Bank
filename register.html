@@ -27,31 +27,31 @@
 
         <h2>Create Your Profile</h2>
 
-        <form>
+        <form id="registerForm">
 
             <div class="input-box">
                 <label>Full Name</label>
-                <input type="text" placeholder="John Smith">
+                <input type="text" id="fullname" placeholder="John Smith">
             </div>
 
             <div class="input-box">
                 <label>Email Address</label>
-                <input type="email" placeholder="john@email.com">
+                <input type="email" id="email" placeholder="john@email.com">
             </div>
 
             <div class="input-box">
                 <label>Phone Number</label>
-                <input type="tel" placeholder="+44 7XXX XXX XXX">
+                <input type="tel" id="phone" placeholder="+44 7XXX XXX XXX">
             </div>
 
             <div class="input-box">
                 <label>Password</label>
-                <input type="password" placeholder="Create a password">
+                <input type="password" id="password" placeholder="Create a password">
             </div>
 
             <div class="input-box">
                 <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm password">
+                <input type="password" id="confirmPassword" placeholder="Confirm password">
             </div>
 
             <button type="submit">
@@ -73,5 +73,51 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabaseUrl = "https://bdgiingplpaosqjkqavg.supabase.co";
+const supabaseKey = "YOUR_PUBLISHABLE_KEY";
+const supabase = window.supabase.createClient(
+  supabaseUrl,
+  supabaseKey
+);
+document.getElementById("registerForm")
+.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const fullname =
+    document.getElementById("fullname").value;
+  const email =
+    document.getElementById("email").value;
+  const password =
+    document.getElementById("password").value;
+  const confirmPassword =
+    document.getElementById("confirmPassword").value;
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+  const { data, error } =
+    await supabase.auth.signUp({
+      email,
+      password
+    });
+  if (error) {
+    alert(error.message);
+    return;
+  }
+  const userId = data.user.id;
+  await supabase
+    .from("users")
+    .insert([
+      {
+        id: null,
+        fullname: fullname
+      }
+    ]);
+  alert("Account created successfully!");
+  window.location.href = "login.html";
+});
+</script>
+    
 </body>
 </html>
