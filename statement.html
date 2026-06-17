@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Statement | NorthBridge Bank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="statement-page">
+<div class="transfer-header">
+    <a href="dashboard.html" class="back-btn">
+        ← Back
+    </a>
+    <h1>Account Statement</h1>
+    <p>
+        View and download your recent banking activity.
+    </p>
+</div>
+<div class="balance-card">
+    <p>Current Balance</p>
+    <h1>£1,000.00</h1>
+    <span>Account No: NBB100001</span>
+</div>
+<div class="statement-card">
+    <div class="statement-top">
+        <input
+            type="text"
+            placeholder="Search transactions..."
+            class="statement-search"
+        >
+        <select class="statement-filter">
+            <option>This Month</option>
+            <option>Last Month</option>
+            <option>Last 3 Months</option>
+            <option>This Year</option>
+        </select>
+    </div>
+    <h3 class="statement-title">
+        Recent Transactions
+    </h3>
+    <div class="transaction">
+        <div>
+            <h4>Salary Deposit</h4>
+            <span>Today • 09:42 AM</span>
+        </div>
+        <div class="positive">
+            +£2,500
+        </div>
+    </div>
+    <div class="transaction">
+        <div>
+            <h4>Netflix</h4>
+            <span>Yesterday • Subscription</span>
+        </div>
+        <div class="negative">
+            -£12.99
+        </div>
+    </div>
+    <div class="transaction">
+        <div>
+            <h4>Amazon Purchase</h4>
+            <span>2 Days Ago</span>
+        </div>
+        <div class="negative">
+            -£59.99
+        </div>
+    </div>
+    <div class="transaction">
+        <div>
+            <h4>Transfer Received</h4>
+            <span>5 Days Ago</span>
+        </div>
+        <div class="positive">
+            +£350.00
+        </div>
+    </div>
+    <button class="download-btn">
+        Download Statement
+    </button>
+</div>
+</div>
+</body>
+</html>
