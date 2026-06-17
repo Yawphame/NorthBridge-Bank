@@ -882,3 +882,13 @@ button{
     margin:0 auto 25px;
     line-height:1.7;
 }
+.action-card{
+    background:white;
+    border-radius:18px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    font-size:22px;
+    text-decoration:none;
+    color:#111827;
+}
