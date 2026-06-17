@@ -39,17 +39,27 @@ body{
 /* HERO */
 
 .hero{
-    min-height:80vh;
-    background:linear-gradient(
-        135deg,
-        #031b4e,
-        #0b3d91
-    );
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(2,12,45,.82),
+        rgba(2,12,45,.75)
+    ),
+    url("assets/london-bg.PNG");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
     display:flex;
-    align-items:center;
+    flex-direction:column;
     justify-content:center;
-    text-align:center;
+    align-items:flex-start;
+
     padding:30px;
+
+    position:relative;
 }
 
 .hero-content{
@@ -58,13 +68,18 @@ body{
 
 .hero-content h1{
     color:white;
-    font-size:42px;
+    font-size:52px;
+    line-height:1.05;
+    font-weight:800;
     margin-bottom:20px;
+    text-shadow:0 4px 15px rgba(0,0,0,.3);
 }
 
 .hero-content p{
-    color:#dbeafe;
+    color:#e2e8f0;
+    font-size:18px;
     line-height:1.7;
+    max-width:320px;
     margin-bottom:30px;
 }
 
@@ -75,20 +90,39 @@ body{
 }
 
 .btn-primary{
-    background:white;
-    color:#031b4e;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    color:white;
     text-decoration:none;
-    padding:14px 24px;
-    border-radius:12px;
-    font-weight:bold;
+
+    padding:16px 28px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,.35);
 }
 
 .btn-secondary{
-    border:2px solid white;
+    border:1px solid rgba(255,255,255,.3);
+
+    backdrop-filter:blur(12px);
+
+    background:rgba(255,255,255,.08);
+
     color:white;
+
     text-decoration:none;
-    padding:14px 24px;
-    border-radius:12px;
+
+    padding:16px 28px;
+
+    border-radius:16px;
 }
 
 /* FEATURES */
