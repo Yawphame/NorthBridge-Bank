@@ -1352,3 +1352,92 @@ button{
     font-size:13px;
     color:#94a3b8;
 }
+/* SETTINGS PAGE */
+
+.settings-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:20px;
+}
+
+.settings-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.08);
+}
+
+.setting-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #e2e8f0;
+
+    color:#031b4e;
+
+    font-weight:600;
+}
+
+.setting-item:last-child{
+    border-bottom:none;
+}
+
+.security-score{
+
+    text-align:center;
+
+    padding:20px 0;
+}
+
+.security-score h1{
+
+    font-size:48px;
+
+    color:#16a34a;
+
+    margin-bottom:10px;
+}
+
+.security-score p{
+
+    color:#64748b;
+}
+
+.logout-btn{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #dc2626,
+        #b91c1c
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 25px rgba(220,38,38,.25);
+}
