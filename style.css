@@ -1283,3 +1283,72 @@ button{
         font-size:22px;
     }
 }
+/* NOTIFICATIONS PAGE */
+
+.notifications-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:20px;
+}
+
+.notification-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:flex-start;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.notification-card:hover{
+    transform:translateY(-3px);
+}
+
+.notification-icon{
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:#eff6ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+}
+
+.notification-card h3{
+    color:#031b4e;
+    margin-bottom:6px;
+}
+
+.notification-card p{
+    color:#64748b;
+    margin-bottom:8px;
+    line-height:1.5;
+}
+
+.notification-card span{
+    font-size:13px;
+    color:#94a3b8;
+}
