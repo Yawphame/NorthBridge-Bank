@@ -106,16 +106,22 @@ document.getElementById("registerForm")
     return;
   }
   const userId = data.user.id;
-  await supabase
-    .from("users")
-    .insert([
-      {
-        id: null,
-        fullname: fullname
-      }
-    ]);
-  alert("Account created successfully!");
-  window.location.href = "login.html";
+
+const { error: insertError } = await supabase
+  .from("users")
+  .insert([
+    {
+      fullname: fullname
+    }
+  ]);
+
+if (insertError) {
+  alert("Database Error: " + insertError.message);
+  return;
+}
+
+alert("Account created successfully!");
+window.location.href = "login.html";
 });
 </script>
     
