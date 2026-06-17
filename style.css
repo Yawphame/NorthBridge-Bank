@@ -735,12 +735,12 @@ button{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:12px;
+    gap:16px;
 }
 
 .logo-container img{
-    width:72px;
-    height:72px;
+    width:64px;
+    height:64px;
     object-fit:contain;
     flex-shrink:0;
 }
@@ -752,7 +752,7 @@ button{
 
 .logo-text h2{
     color:white;
-    font-size:30px;
+    font-size:28px;
     font-weight:800;
     line-height:1;
     margin:0;
@@ -761,7 +761,7 @@ button{
 .logo-text p{
     color:#94a3b8;
     font-size:12px;
-    letter-spacing:2px;
+    letter-spacing:3px;
     text-transform:uppercase;
     margin-top:4px;
 }
