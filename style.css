@@ -19,6 +19,7 @@ body{
     padding:14px 20px;
     background:#021845;
     border-bottom:1px solid rgba(255,255,255,.08);
+    position:relative;
 }
 
 .logo-container{
@@ -807,39 +808,43 @@ button{
     cursor:pointer;
 }
 
+
+
 @media(max-width:768px){
 
     .menu-toggle{
         display:block;
+        color:white;
+        font-size:32px;
+        cursor:pointer;
     }
-
-    .nav-links{
-        display:none;
-    }
-}
-
-@media(max-width:768px){
 
     .nav-links{
         display:none;
         flex-direction:column;
+
         position:absolute;
-        top:70px;
+        top:75px;
         right:15px;
+
         background:#021845;
-        padding:15px;
+
+        padding:16px;
+
         border-radius:12px;
+
+        min-width:180px;
+
         box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+        z-index:999;
     }
 
     .nav-links.active{
         display:flex;
     }
 
-    .menu-toggle{
-        display:block;
-        color:white;
-        font-size:28px;
-        cursor:pointer;
+    .nav-links a{
+        padding:10px 0;
     }
 }
