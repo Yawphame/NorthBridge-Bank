@@ -672,3 +672,42 @@ button{
 
     font-weight:400;
 }
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    border-radius:8px;
+}
+
+.logo span{
+    color:white;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:-0.5px;
+}
+
+/* MOBILE LOGO */
+
+@media(max-width:768px){
+
+    .logo{
+        justify-content:center;
+    }
+
+    .logo img{
+        width:36px;
+        height:36px;
+    }
+
+    .logo span{
+        font-size:20px;
+    }
+}
