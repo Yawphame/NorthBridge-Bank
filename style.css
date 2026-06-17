@@ -948,3 +948,16 @@ button{
     box-shadow:
     0 10px 25px rgba(3,27,78,.25);
 }
+.deposit-select{
+    width:100%;
+    padding:15px;
+    border:1px solid #dbeafe;
+    border-radius:14px;
+    font-size:15px;
+    background:white;
+}
+
+.deposit-select:focus{
+    outline:none;
+    border-color:#2563eb;
+}
