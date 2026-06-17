@@ -1061,3 +1061,115 @@ button{
     box-shadow:
     0 10px 25px rgba(3,27,78,.25);
 }
+/* PROFILE PAGE */
+
+.profile-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:20px;
+}
+
+.profile-card{
+    background:linear-gradient(
+        135deg,
+        #031b4e,
+        #0b3d91
+    );
+
+    color:white;
+    text-align:center;
+
+    padding:30px;
+    border-radius:24px;
+
+    box-shadow:
+    0 10px 25px rgba(3,27,78,.25);
+
+    margin-bottom:20px;
+}
+
+.profile-avatar{
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:white;
+    color:#031b4e;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:36px;
+    font-weight:800;
+
+    margin:0 auto 15px;
+}
+
+.profile-status{
+    color:#cbd5e1;
+    margin-top:8px;
+}
+
+.details-card{
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+}
+
+.detail-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 0;
+
+    border-bottom:1px solid #e2e8f0;
+}
+
+.detail-row:last-child{
+    border-bottom:none;
+}
+
+.detail-row span{
+    color:#64748b;
+    font-size:14px;
+}
+
+.detail-row strong{
+    color:#031b4e;
+    text-align:right;
+}
+
+.profile-btn{
+    width:100%;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #031b4e,
+        #0b3d91
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 25px rgba(3,27,78,.25);
+}
