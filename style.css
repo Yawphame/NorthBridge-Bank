@@ -811,20 +811,39 @@ button{
 
 @media(max-width:768px){
 
+    .navbar{
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:20px;
+    }
+
     .logo-container{
-        gap:10px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+        margin-bottom:20px;
     }
 
     .logo-container img{
-        width:42px;
-        height:42px;
+        width:60px;
+        height:60px;
+        object-fit:contain;
     }
 
     .logo-text h2{
-        font-size:20px;
+        font-size:22px;
     }
 
     .logo-text p{
-        font-size:10px;
+        font-size:11px;
+        letter-spacing:2px;
+    }
+
+    .nav-links{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        gap:30px;
     }
 }
