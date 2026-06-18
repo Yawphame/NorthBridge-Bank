@@ -65,7 +65,7 @@ const supabase = window.supabase.createClient(
 document.getElementById("loginBtn")
 .addEventListener("click", async function() {
 
-    document.body.style.background = "yellow";
+    
 
     const email =
       document.getElementById("email").value;
@@ -79,7 +79,7 @@ document.getElementById("loginBtn")
         password
       });
 
-    document.body.style.background = "blue";
+    
 
     if(error){
         alert(error.message);
@@ -91,9 +91,7 @@ document.getElementById("loginBtn")
 });
 </script>
 
-<script>
-document.body.style.background = "red";
-</script>
+
     
 </body>
 </html>
