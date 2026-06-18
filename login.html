@@ -83,28 +83,22 @@ document.getElementById("loginBtn")
     try {
 
         const result =
-  await supabase.auth.signInWithPassword({
-      email,
-      password
-  });
+          await supabase.auth.signInWithPassword({
+              email,
+              password
+          });
 
-alert(JSON.stringify(result));
-
-        if (error) {
-            alert(error.message);
-            return;
-        }
-
-        window.location.href = "dashboard.html";
+        alert(JSON.stringify(result));
 
     } catch (err) {
 
-        alert("Login failed. Please try again.");
+        alert(err.message);
 
     }
 
 });
 </script>
+
 
     
 </body>
