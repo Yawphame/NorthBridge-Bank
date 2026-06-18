@@ -20,27 +20,27 @@
         <h2>Welcome Back</h2>
         <span>Sign in to continue</span>
 
-        <form>
+        <form id="loginForm">
 
-            <div class="input-box">
-                <label>Email Address</label>
-                <input type="email" placeholder="name@email.com">
-            </div>
+    <div class="input-box">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="name@email.com">
+    </div>
 
-            <div class="input-box">
-                <label>Password</label>
-                <input type="password" placeholder="••••••••">
-            </div>
+    <div class="input-box">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="••••••••">
+    </div>
 
-            <a href="#" class="forgot-link">
-                Forgot Password?
-            </a>
+    <a href="#" class="forgot-link">
+        Forgot Password?
+    </a>
 
-            <button type="submit">
-                Sign In
-            </button>
+    <button type="submit">
+        Sign In
+    </button>
 
-        </form>
+</form>
 
         <div class="divider">
             <span>OR</span>
@@ -54,5 +54,41 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  "https://ivebxspiqaaanwgjgzqr.supabase.co",
+  "YOUR_PUBLISHABLE_KEY"
+);
+
+document.getElementById("loginForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const email =
+      document.getElementById("email").value;
+
+    const password =
+      document.getElementById("password").value;
+
+    const { data, error } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    alert("LOGIN SUCCESS");
+
+    window.location.href = "dashboard.html";
+});
+</script>
+    
 </body>
 </html>
