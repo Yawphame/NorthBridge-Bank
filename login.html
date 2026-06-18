@@ -62,28 +62,35 @@ const supabase = window.supabase.createClient(
   "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
 );
 
-document.getElementById(“loginBtn”)
-.addEventListener(“click”, async function() {
+document.getElementById("loginBtn")
+.addEventListener("click", async function() {
 
-alert("START");
-const email =
-  document.getElementById("email").value;
-const password =
-  document.getElementById("password").value;
-const { data, error } =
-  await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
-alert("AFTER SUPABASE");
-if(error){
-    alert(error.message);
-    return;
-}
-window.location.href = "dashboard.html";
+    alert("START");
+
+    const email =
+      document.getElementById("email").value;
+
+    const password =
+      document.getElementById("password").value;
+
+    const { data, error } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+    alert("AFTER SUPABASE");
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    window.location.href = "dashboard.html";
 
 });
 </script>
+
 
 
     
