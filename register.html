@@ -57,11 +57,21 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const supabaseUrl = "https://ivebxspiqaaanwgjgzqr.supabase.co";
+const supabaseKey = "YOUR_PUBLISHABLE_KEY";
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
 document.getElementById("registerForm")
-.addEventListener("submit", function(e) {
+.addEventListener("submit", async function(e) {
     e.preventDefault();
-    alert("HANDLER WORKING");
-    return false;
+    alert("1");
+    const email =
+        document.getElementById("email").value;
+    const password =
+        document.getElementById("password").value;
+    alert("2");
 });
 </script>
 </body>
