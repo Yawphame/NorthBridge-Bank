@@ -36,9 +36,9 @@
         Forgot Password?
     </a>
 
-    <button type="submit">
-        Sign In
-    </button>
+    <button type="button" id="loginBtn">
+    Sign In
+</button>
 
 </form>
 
@@ -55,38 +55,27 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 const supabase = window.supabase.createClient(
   "https://ivebxspiqaaanwgjgzqr.supabase.co",
   "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
 );
-
-document.getElementById("loginForm")
-.addEventListener("submit", async function(e){
-
-    e.preventDefault();
-
+document.getElementById("loginBtn")
+.addEventListener("click", async function() {
     const email =
       document.getElementById("email").value;
-
     const password =
       document.getElementById("password").value;
-
     const { data, error } =
       await supabase.auth.signInWithPassword({
         email,
         password
       });
-
     if(error){
         alert(error.message);
         return;
     }
-
     alert("LOGIN SUCCESS");
-
-    window.location.href = "dashboard.html";
 });
 </script>
 
