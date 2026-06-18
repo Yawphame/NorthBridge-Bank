@@ -56,6 +56,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 const supabase = window.supabase.createClient(
   "https://ivebxspiqaaanwgjgzqr.supabase.co",
@@ -63,33 +64,43 @@ const supabase = window.supabase.createClient(
 );
 
 document.getElementById("loginBtn")
-.addEventListener("click", async function() {
-
-    alert("START");
+.addEventListener("click", async function () {
 
     const email =
-      document.getElementById("email").value;
+      document.getElementById("email").value.trim();
 
     const password =
       document.getElementById("password").value;
 
-    const { data, error } =
-      await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
-
-    alert("AFTER SUPABASE");
-
-    if(error){
-        alert(error.message);
+    if (!email || !password) {
+        alert("Please enter your email and password");
         return;
     }
 
-    window.location.href = "dashboard.html";
+    try {
+
+        const { data, error } =
+          await supabase.auth.signInWithPassword({
+              email,
+              password
+          });
+
+        if (error) {
+            alert(error.message);
+            return;
+        }
+
+        window.location.href = "dashboard.html";
+
+    } catch (err) {
+
+        alert("Login failed. Please try again.");
+
+    }
 
 });
 </script>
+
 
 
 
