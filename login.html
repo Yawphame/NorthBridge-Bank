@@ -82,11 +82,13 @@ document.getElementById("loginBtn")
 
     try {
 
-        const { data, error } =
-          await supabase.auth.signInWithPassword({
-              email,
-              password
-          });
+        const result =
+  await supabase.auth.signInWithPassword({
+      email,
+      password
+  });
+
+alert(JSON.stringify(result));
 
         if (error) {
             alert(error.message);
