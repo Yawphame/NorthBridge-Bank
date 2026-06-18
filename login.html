@@ -57,37 +57,23 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const supabase = window.supabase.createClient(
-  "https://ivebxspiqaaanwgjgzqr.supabase.co",
-  "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
-);
+alert("SCRIPT START");
 
-document.getElementById("loginBtn")
-.addEventListener("click", async function () {
+try {
 
-    alert("1");
+    const supabase = window.supabase.createClient(
+      "https://ivebxspiqaaanwgjgzqr.supabase.co",
+      "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
+    );
 
-    try {
+    alert("CLIENT CREATED");
 
-        alert("2");
+} catch(err) {
 
-        const result = await supabase.auth.signInWithPassword({
-            email: "test@test.com",
-            password: "123456"
-        });
+    alert("FAILED");
+    alert(err.message);
 
-        alert("3");
-
-        alert(JSON.stringify(result));
-
-    } catch (err) {
-
-        alert("ERROR");
-        alert(err.message);
-
-    }
-
-});
+}
 </script>
 
 
