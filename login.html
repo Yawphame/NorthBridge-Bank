@@ -69,11 +69,15 @@ const supabase = window.supabase.createClient(
 document.getElementById("loginBtn")
 .addEventListener("click", async function () {
 
+    alert("1");
+
     const email =
       document.getElementById("email").value.trim();
 
     const password =
       document.getElementById("password").value;
+
+    alert("2");
 
     if (!email || !password) {
         alert("Please enter your email and password");
@@ -82,16 +86,21 @@ document.getElementById("loginBtn")
 
     try {
 
+        alert("3");
+
         const result =
           await supabase.auth.signInWithPassword({
               email,
               password
           });
 
+        alert("4");
+
         alert(JSON.stringify(result));
 
     } catch (err) {
 
+        alert("ERROR");
         alert(err.message);
 
     }
