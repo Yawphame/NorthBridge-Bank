@@ -83,10 +83,18 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-// Initialize Supabase client
+// Initialize Supabase
 const supabaseUrl = "https://ivebxspiqaaanwgjgzqr.supabase.co";
 const supabaseKey = "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU";
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+let supabase;
+
+try {
+    supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    console.log("✅ Supabase initialized");
+} catch (err) {
+    console.error("❌ Failed to initialize Supabase:", err);
+}
 
 // DOM Elements
 const loginForm = document.getElementById("loginForm");
@@ -98,19 +106,12 @@ const passwordError = document.getElementById("passwordError");
 const loginError = document.getElementById("loginError");
 const loadingContainer = document.getElementById("loadingContainer");
 
-// Email validation regex
+// Validation (unchanged)
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Clear individual field errors when user starts typing
-emailInput.addEventListener("input", () => {
-    emailError.textContent = "";
-});
+emailInput.addEventListener("input", () => emailError.textContent = "");
+passwordInput.addEventListener("input", () => passwordError.textContent = "");
 
-passwordInput.addEventListener("input", () => {
-    passwordError.textContent = "";
-});
-
-// Validate individual fields
 function validateEmail(email) {
     if (!email) {
         emailError.textContent = "Email address is required";
@@ -137,61 +138,57 @@ function validatePassword(password) {
     return true;
 }
 
-// Handle form submission
+// === MAIN SUBMIT HANDLER ===
 loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    
-    // Clear previous error messages
+    e.preventDefault();   // ← This is critical
+
+    // Clear errors
     loginError.style.display = "none";
-    loginError.textContent = "";
-    
-    // Get input values
+    emailError.textContent = "";
+    passwordError.textContent = "";
+
     const email = emailInput.value.trim();
     const password = passwordInput.value;
-    
-    // Validate inputs
-    const isEmailValid = validateEmail(email);
-    const isPasswordValid = validatePassword(password);
-    
-    if (!isEmailValid || !isPasswordValid) {
+
+    if (!validateEmail(email) || !validatePassword(password)) {
         return;
     }
-    
-    // Show loading state
+
+    // Loading state
     loadingContainer.style.display = "block";
     loginBtn.disabled = true;
-    
+    loginBtn.textContent = "Signing in...";
+
     try {
-        // Attempt login with Supabase
+        if (!supabase) {
+            throw new Error("Supabase client not initialized");
+        }
+
         const { data, error } = await supabase.auth.signInWithPassword({
             email: email,
             password: password
         });
-        
+
         if (error) {
-            // Display error message
-            loginError.textContent = error.message || "Login failed. Please check your credentials and try again.";
-            loginError.style.display = "block";
             console.error("Login error:", error);
-            
-            // Hide loading and reset button
-            loadingContainer.style.display = "none";
-            loginBtn.disabled = false;
-        } else if (data.session) {
-    alert("LOGIN SUCCESS");
-}
+            loginError.textContent = error.message || "Invalid email or password";
+            loginError.style.display = "block";
+        } else if (data.user) {
+            console.log("✅ Login successful:", data.user);
+            alert("LOGIN SUCCESS! 🎉");   // Replace this later with redirect
+            // window.location.href = "dashboard.html"; // ← Uncomment when ready
+        }
     } catch (err) {
-        // Handle unexpected errors
-        loginError.textContent = "An unexpected error occurred. Please try again later.";
-        loginError.style.display = "block";
         console.error("Unexpected error:", err);
-        
-        // Hide loading and reset button
+        loginError.textContent = "Something went wrong. Please try again.";
+        loginError.style.display = "block";
+    } finally {
+        // Reset UI
         loadingContainer.style.display = "none";
         loginBtn.disabled = false;
+        loginBtn.textContent = "Sign In";
     }
 });
-    
 </script>
 
 </body>
