@@ -56,14 +56,21 @@
     </div>
 </div>
     
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+alert("SCRIPT STARTED");
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+alert("SUPABASE FILE LOADED");
+
 const supabase = window.supabase.createClient(
   "https://ivebxspiqaaanwgjgzqr.supabase.co",
   "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
 );
 
-  alert("SCRIPT LOADED");  
+alert("SUPABASE CREATED");
     
 document.getElementById("registerBtn")
 .addEventListener("click", async function() {
