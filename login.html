@@ -53,7 +53,10 @@
             <div class="alert alert-error" id="loginError" style="display: none;"></div>
 
             <!-- Loading Spinner -->
-            <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
+            <div id="loadingContainer" style="display: none; text-align: center; margin: 20px 0;">
+                <div class="loading-spinner"></div>
+                <p style="margin-top: 10px; color: #64748b;">Signing in...</p>
+            </div>
 
             <a href="forgot-password.html" class="forgot-link">
                 Forgot Password?
@@ -93,7 +96,7 @@ const loginBtn = document.getElementById("loginBtn");
 const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const loginError = document.getElementById("loginError");
-const loadingSpinner = document.getElementById("loadingSpinner");
+const loadingContainer = document.getElementById("loadingContainer");
 
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -155,9 +158,8 @@ loginForm.addEventListener("submit", async (e) => {
     }
     
     // Show loading state
-    loadingSpinner.style.display = "block";
+    loadingContainer.style.display = "block";
     loginBtn.disabled = true;
-    loginBtn.textContent = "Signing In...";
     
     try {
         // Attempt login with Supabase
@@ -171,35 +173,56 @@ loginForm.addEventListener("submit", async (e) => {
             loginError.textContent = error.message || "Login failed. Please check your credentials and try again.";
             loginError.style.display = "block";
             console.error("Login error:", error);
+            
+            // Hide loading and reset button
+            loadingContainer.style.display = "none";
+            loginBtn.disabled = false;
         } else if (data.session) {
-            // Successful login - redirect to dashboard
+            // Successful login
             console.log("Login successful:", data.user.email);
-            // Redirect to dashboard
-            window.location.href = "dashboard.html";
+            
+            // Store session info if needed
+            sessionStorage.setItem("user_email", data.user.email);
+            
+            // Wait a moment for session to be fully established, then redirect
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 500);
         }
     } catch (err) {
         // Handle unexpected errors
         loginError.textContent = "An unexpected error occurred. Please try again later.";
         loginError.style.display = "block";
         console.error("Unexpected error:", err);
-    } finally {
-        // Reset loading state
-        loadingSpinner.style.display = "none";
+        
+        // Hide loading and reset button
+        loadingContainer.style.display = "none";
         loginBtn.disabled = false;
-        loginBtn.textContent = "Sign In";
     }
 });
 
-// Optional: Check if user is already logged in
+// Optional: Check if user is already logged in on page load
 window.addEventListener("load", async () => {
     try {
         const { data: { session } } = await supabase.auth.getSession();
         if (session) {
             // User is already logged in, redirect to dashboard
+            console.log("Session found, redirecting to dashboard");
             window.location.href = "dashboard.html";
         }
     } catch (err) {
         console.error("Session check error:", err);
+    }
+});
+
+// Listen for auth state changes (in case session changes)
+supabase.auth.onAuthStateChange((event, session) => {
+    console.log("Auth state changed:", event);
+    if (event === "SIGNED_IN" && session) {
+        console.log("User signed in, redirecting...");
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 500);
     }
 });
 </script>
