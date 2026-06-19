@@ -77,10 +77,15 @@ document.getElementById("registerForm")
   }
   try {
     const { data, error } =
-      await supabase.auth.signUp({
-        email,
-        password
-      });
+  await supabase.auth.signUp({
+    email,
+    password
+  });
+
+console.log(data);
+console.log(error);
+
+alert(JSON.stringify(error));
     if(error){
       alert(error.message);
       return;
