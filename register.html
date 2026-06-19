@@ -64,6 +64,7 @@ const supabase = window.supabase.createClient(
 );
 document.getElementById("registerBtn")
 .addEventListener("click", async function() {
+    alert("BUTTON CLICKED");
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
