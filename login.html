@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NorthBridge Bank</title>
+    <title>NorthBridge Bank - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,27 +20,50 @@
         <h2>Welcome Back</h2>
         <span>Sign in to continue</span>
 
-        <form id="loginForm">
+        <form id="loginForm" novalidate>
 
-    <div class="input-box">
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="name@email.com">
-    </div>
+            <div class="input-box">
+                <label for="email">Email Address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                    placeholder="name@email.com"
+                    required
+                    autocomplete="email"
+                >
+                <span class="error-message" id="emailError"></span>
+            </div>
 
-    <div class="input-box">
-        <label>Password</label>
-        <input type="password" id="password" placeholder="••••••••">
-    </div>
+            <div class="input-box">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password"
+                    placeholder="••••••••"
+                    required
+                    autocomplete="current-password"
+                    minlength="6"
+                >
+                <span class="error-message" id="passwordError"></span>
+            </div>
 
-    <a href="#" class="forgot-link">
-        Forgot Password?
-    </a>
+            <!-- Error Alert -->
+            <div class="alert alert-error" id="loginError" style="display: none;"></div>
 
-    <button type="button" id="loginBtn">
-    Sign In
-</button>
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
 
-</form>
+            <a href="forgot-password.html" class="forgot-link">
+                Forgot Password?
+            </a>
+
+            <button type="submit" id="loginBtn" class="login-submit-btn">
+                Sign In
+            </button>
+
+        </form>
 
         <div class="divider">
             <span>OR</span>
@@ -57,20 +80,129 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const supabase = window.supabase.createClient(
-  "https://ivebxspiqaaanwgjgzqr.supabase.co",
-  "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
-);
+// Initialize Supabase client
+const supabaseUrl = "https://ivebxspiqaaanwgjgzqr.supabase.co";
+const supabaseKey = "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU";
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-document.getElementById("loginBtn")
-.addEventListener("click", function() {
+// DOM Elements
+const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
+const loginError = document.getElementById("loginError");
+const loadingSpinner = document.getElementById("loadingSpinner");
 
-    alert("BUTTON PRESSED");
+// Email validation regex
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Clear individual field errors when user starts typing
+emailInput.addEventListener("input", () => {
+    emailError.textContent = "";
+});
+
+passwordInput.addEventListener("input", () => {
+    passwordError.textContent = "";
+});
+
+// Validate individual fields
+function validateEmail(email) {
+    if (!email) {
+        emailError.textContent = "Email address is required";
+        return false;
+    }
+    if (!emailRegex.test(email)) {
+        emailError.textContent = "Please enter a valid email address";
+        return false;
+    }
+    emailError.textContent = "";
+    return true;
+}
+
+function validatePassword(password) {
+    if (!password) {
+        passwordError.textContent = "Password is required";
+        return false;
+    }
+    if (password.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters";
+        return false;
+    }
+    passwordError.textContent = "";
+    return true;
+}
+
+// Handle form submission
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // Clear previous error messages
+    loginError.style.display = "none";
+    loginError.textContent = "";
+    
+    // Get input values
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    
+    // Validate inputs
+    const isEmailValid = validateEmail(email);
+    const isPasswordValid = validatePassword(password);
+    
+    if (!isEmailValid || !isPasswordValid) {
+        return;
+    }
+    
+    // Show loading state
+    loadingSpinner.style.display = "block";
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Signing In...";
+    
+    try {
+        // Attempt login with Supabase
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+        
+        if (error) {
+            // Display error message
+            loginError.textContent = error.message || "Login failed. Please check your credentials and try again.";
+            loginError.style.display = "block";
+            console.error("Login error:", error);
+        } else if (data.session) {
+            // Successful login - redirect to dashboard
+            console.log("Login successful:", data.user.email);
+            // Redirect to dashboard
+            window.location.href = "dashboard.html";
+        }
+    } catch (err) {
+        // Handle unexpected errors
+        loginError.textContent = "An unexpected error occurred. Please try again later.";
+        loginError.style.display = "block";
+        console.error("Unexpected error:", err);
+    } finally {
+        // Reset loading state
+        loadingSpinner.style.display = "none";
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Sign In";
+    }
+});
+
+// Optional: Check if user is already logged in
+window.addEventListener("load", async () => {
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+            // User is already logged in, redirect to dashboard
+            window.location.href = "dashboard.html";
+        }
+    } catch (err) {
+        console.error("Session check error:", err);
+    }
 });
 </script>
 
-
-    
 </body>
 </html>
