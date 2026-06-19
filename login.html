@@ -83,10 +83,105 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-// Simple test - remove all Supabase stuff temporarily
-document.getElementById("loginForm").addEventListener("submit", function(e) {
+// Safe Supabase initialization
+const supabaseUrl = "https://ivebxspiqaaanwgjgzqr.supabase.co";
+const supabaseKey = "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU";
+
+let supabase = null;
+
+try {
+    supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    console.log("✅ Supabase client ready");
+} catch (err) {
+    console.error("❌ Supabase init failed:", err);
+}
+
+// DOM elements
+const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
+const loginError = document.getElementById("loginError");
+const loadingContainer = document.getElementById("loadingContainer");
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+emailInput.addEventListener("input", () => emailError.textContent = "");
+passwordInput.addEventListener("input", () => passwordError.textContent = "");
+
+function validateEmail(email) {
+    if (!email) {
+        emailError.textContent = "Email address is required";
+        return false;
+    }
+    if (!emailRegex.test(email)) {
+        emailError.textContent = "Please enter a valid email address";
+        return false;
+    }
+    emailError.textContent = "";
+    return true;
+}
+
+function validatePassword(password) {
+    if (!password) {
+        passwordError.textContent = "Password is required";
+        return false;
+    }
+    if (password.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters";
+        return false;
+    }
+    passwordError.textContent = "";
+    return true;
+}
+
+// Main login handler
+loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    alert("✅ Button works! JS is running.");
+
+    loginError.style.display = "none";
+    loginError.textContent = "";
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!validateEmail(email) || !validatePassword(password)) {
+        return;
+    }
+
+    // Show loading
+    loadingContainer.style.display = "block";
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Signing in...";
+
+    try {
+        if (!supabase) {
+            throw new Error("Supabase not initialized");
+        }
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) {
+            loginError.textContent = error.message || "Invalid email or password";
+            loginError.style.display = "block";
+        } else if (data.user) {
+            alert("🎉 Login Successful!");
+            // window.location.href = "dashboard.html"; // Add this later
+        }
+    } catch (err) {
+        console.error("Login error:", err);
+        loginError.textContent = "Something went wrong. Please try again.";
+        loginError.style.display = "block";
+    } finally {
+        loadingContainer.style.display = "none";
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Sign In";
+    }
 });
 </script>
 
