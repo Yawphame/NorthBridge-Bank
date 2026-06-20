@@ -67,11 +67,16 @@ alert("AFTER 999");
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-alert("LOCAL SCRIPT START");
-
 document.getElementById("registerBtn")
 .addEventListener("click", function () {
-    alert("BUTTON CLICKED");
+
+    alert("START");
+
+    const fullname =
+    document.getElementById("fullname").value;
+
+    alert("NAME = " + fullname);
+
 });
 </script>
 
