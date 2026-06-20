@@ -167,12 +167,16 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             if (error) {
-                loginError.textContent = error.message || "Invalid credentials";
-                loginError.style.display = "block";
-            } else if (data.user) {
-                alert("🎉 Login Successful!");
-                // window.location.href = "/dashboard.html";  // Change when you add dashboard
-            }
+    loginError.textContent = error.message || "Invalid credentials";
+    loginError.style.display = "block";
+} else if (data.user) {
+
+    localStorage.setItem("userEmail", data.user.email);
+
+    alert("🎉 Login Successful!");
+
+    window.location.href = "dashboard.html";
+}
         } catch (err) {
             console.error("Login error:", err);
             loginError.textContent = "Something went wrong. Please try again.";
