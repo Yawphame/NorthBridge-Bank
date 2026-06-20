@@ -67,9 +67,41 @@ alert("AFTER 999");
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-alert(typeof supabase);
+const supabaseClient = window.supabase.createClient(
+  "https://ivebxspiqaaanwgjgzqr.supabase.co",
+  "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
+);
+document.getElementById("registerBtn").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  if (!email || !password) {
+    alert("Please fill all required fields");
+    return;
+  }
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+  alert("Sending signup request...");
+  try {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password
+    });
+    if (error) {
+      alert("SUPABASE ERROR: " + error.message);
+      return;
+    }
+    alert("SUCCESS");
+    console.log(data);
+  } catch (err) {
+    alert("CATCH ERROR: " + err.message);
+    console.error(err);
+  }
+});
 </script>
 
-    <h1>TEST VERSION 7</h1>
+    <h1>TEST VERSION 777</h1>
 </body>
 </html>
