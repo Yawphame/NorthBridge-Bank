@@ -1130,3 +1130,120 @@ button {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+/* ACCOUNT INFO */
+
+.account-info{
+    background:white;
+    padding:18px;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.account-info div{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.account-info div:last-child{
+    margin-bottom:0;
+}
+
+.account-info small{
+    color:#64748b;
+}
+
+.account-info strong{
+    color:#031b4e;
+}
+
+/* STATS */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:white;
+    padding:18px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.stat-card p{
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.stat-card h3{
+    color:#031b4e;
+}
+
+/* CREDIT SCORE */
+
+.credit-score-card{
+    background:linear-gradient(
+        135deg,
+        #031b4e,
+        #0b3d91
+    );
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:22px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.score-status{
+    background:rgba(255,255,255,.2);
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:600;
+}
+
+/* STATUS BOX */
+
+.status-box{
+    background:white;
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    font-weight:600;
+    color:#16a34a;
+}
+
+/* PREMIUM HEADER */
+
+.welcome{
+    font-size:15px;
+    color:#64748b;
+    font-weight:600;
+}
+
+#currentDate{
+    color:#94a3b8;
+    font-size:13px;
+    margin-top:4px;
+    margin-bottom:4px;
+}
+
+/* BETTER TRANSACTIONS */
+
+.transaction{
+    border-left:4px solid #031b4e;
+}
