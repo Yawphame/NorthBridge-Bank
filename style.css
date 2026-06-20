@@ -1498,8 +1498,7 @@ border-radius:24px;
 padding:22px;
 margin-bottom:22px;
 
-display:grid;
-grid-template-columns:1fr auto;
+
 row-gap:18px;
 box-shadow:0 8px 25px rgba(0,0,0,.05);
 
