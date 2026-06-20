@@ -14,18 +14,18 @@
 
         <div>
             <p class="welcome">Welcome Back</p>
-            <h2>Junior</h2>
+<h2 id="userName">Loading...</h2>
         </div>
 
        <div class="profile-area">
 
-    <div class="profile">
-        J
-    </div>
+   <div class="profile" id="profileLetter">
+    J
+</div>
 
-    <a href="index.html" class="logout-btn">
-        Logout
-    </a>
+    <a href="#" class="logout-btn" id="logoutBtn">
+    Logout
+</a>
 
 </div>
 
@@ -151,5 +151,42 @@
 
 </div>
 
+<script>
+const email = localStorage.getItem("userEmail");
+
+if (!email) {
+    window.location.href = "login.html";
+}
+
+const username = email.split("@")[0];
+
+document.getElementById("userName").textContent =
+username.charAt(0).toUpperCase() + username.slice(1);
+
+document.getElementById("profileLetter").textContent =
+username.charAt(0).toUpperCase();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+    "https://ivebxspiqaaanwgjgzqr.supabase.co",
+    "sb_publishable_WpVmOL5d2M0JseiIPHTLYA_AYZcqCWU"
+);
+
+document.getElementById("logoutBtn")
+.addEventListener("click", async function(e){
+
+    e.preventDefault();
+
+    await supabase.auth.signOut();
+
+    localStorage.clear();
+
+    window.location.href = "login.html";
+});
+</script>
+    
 </body>
 </html>
