@@ -1991,3 +1991,11 @@ line-height:1;
         word-break:break-word;
     }
 }
+@media(max-width:768px){
+
+    .stat-card{
+        padding:10px;
+        height:95px;
+    }
+
+}
