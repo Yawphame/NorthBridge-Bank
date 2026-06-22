@@ -1776,13 +1776,13 @@ body{
 .insight-card{
     background:white;
     border-radius:30px;
-    padding:25px;
+    padding:20px;
     box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
 .insight-card h3{
     color:#b91c1c;
-    font-size:30px;
+    font-size:24px;
 }
 
 /* STATS */
@@ -1947,12 +1947,26 @@ max-width:100%;
 overflow:hidden;
 }
 .balance-card{
-padding:35px;
+padding:24px;
 border-radius:32px;
 }
 
 .balance-card h1{
-font-size:56px;
+font-size:48px;
 font-weight:800;
 line-height:1;
+}
+@media(max-width:768px){
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+@media(max-width:768px){
+
+    .stats-row{
+        grid-template-columns:1fr 1fr;
+    }
+
 }
