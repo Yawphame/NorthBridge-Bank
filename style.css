@@ -2399,3 +2399,10 @@ line-height:1;
         font-size:13px;
     }
 }
+.notification-content{
+    flex:1;
+}
+
+.notification-card{
+    align-items:center;
+}
