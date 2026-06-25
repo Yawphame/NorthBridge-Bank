@@ -2005,3 +2005,34 @@ line-height:1;
     }
 
 }
+/* MOBILE DASHBOARD HEADER FIX */
+
+@media(max-width:768px){
+
+    .top-bar{
+        padding:20px;
+        overflow:hidden;
+    }
+
+    #userName{
+        font-size:28px;
+        line-height:1.1;
+        word-break:break-word;
+    }
+
+    .profile{
+        width:58px;
+        height:58px;
+        font-size:24px;
+    }
+
+    .profile-area{
+        margin-left:10px;
+        gap:4px;
+    }
+
+    .logout-btn{
+        font-size:11px;
+    }
+
+}
