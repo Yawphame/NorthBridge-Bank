@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scarborough Bank - Login</title>
+    <title>Scarborough Demo Bank - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="demo-banner">
+    Demo Banking Experience • For UI demonstration only • Do not use real banking credentials.
+</div>
+    
 <div class="login-page">
 
     <div class="brand-section">
-        <h1>Scarborough</h1>
-        <p>Secure Banking for Modern Britain</p>
+        <h1>Scarborough Demo</h1>
+       <p>Modern Digital Banking Experience</p>
     </div>
 
     <div class="login-card">
 
         <h2>Welcome Back</h2>
-        <span>Sign in to continue</span>
+        <span>Sign in with your demo account</span>
 
         <form id="loginForm" novalidate>
 
@@ -63,7 +67,7 @@
             </a>
 
             <button type="submit" id="loginBtn" class="login-submit-btn">
-                Sign In
+                Demo Login
             </button>
 
         </form>
@@ -173,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     localStorage.setItem("userEmail", data.user.email);
 
-    alert("🎉 Login Successful!");
+    alert("Welcome to the Scarborough Demo dashboard!");
 
     window.location.href = "dashboard.html";
 }
@@ -190,5 +194,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<footer>
+    © 2026 Scarborough Demo Bank • Demonstration Website
+</footer>
+    
 </body>
 </html>
